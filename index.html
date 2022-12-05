@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos Javascript</title>
+</head>
+<body>
+    <h1>Fundamentos JS</h1>
+
+    <script>
+        /*
+        //###################################################################3
+        let nombre = 'Jon';
+        let apellido = 'Doe';
+        
+        let saludo = "Hola mi nombre es: "+nombre +" "+
+        apellido+".";
+        console.log(saludo);
+
+        //Interpolacion de variables
+        //Template String
+        let saludo2 = `Hola mi nombre es ${nombre} ${apellido}.`;
+        console.log(saludo2);
+        //Es lo mismo que concatenar pero se utiliza menos caracteres
+
+        //Las template strings toma todo la expresion como una sola, y no es necesario concatenar
+        let ul = `<ul>
+                    <li>Primavera</li>
+                    <li>Verano</li>
+                    <li>Otono</li>
+                    <li>Invierno</li>
+                </ul>`; 
+
+        //###################################################################
+        let a = 2;
+        let b = new Number(1);
+        let c = 7.19;
+        let d = "5.6"
+
+        console.log(typeof c, typeof d)
+        console.log(a,b);
+        console.log(c.toFixed(1)); //Redondea decimal
+        console.log(c.toFixed(5));
+        console.log(parseInt(c)); //Convierte un numero a Int
+        console.log(parseFloat(c));
+        console.log(c+d); //Se concatena el numero 7.19 con 5.6 = 7.195.6
+        console.log(c+parseInt(d));
+
+        //####################################################################
+        //Funcion Declarada
+        function estoEsUnaFuncion(){
+            console.log('Uno');
+            console.log('Dos');
+            console.log('Tres');
+        }
+
+        function funcionQueDevuelveValor(){
+            console.log('Tres');
+            return "La funcion ha retornado una cadena de texto";
+        }
+        //Invocacion de funcion
+        estoEsUnaFuncion();
+
+        //Recibir datos 
+        function saludar(nombre, edad){
+            console.log(`Hola mi nombre es ${nombre} y tengo ${edad} anios`);
+        }
+
+        saludar("Greco", "5");
+        saludar();
+
+        //Funcion Declarada vs Funciones Expresadas
+        //Funcion Declarada 
+
+        //Declaracion
+        function funcionQueDevuelveValor(){
+            console.log('Tres');
+            return "La funcion ha retornado una cadena de texto";
+        }
+        //Invocacion de funcion
+        estoEsUnaFuncion();
+
+
+        //Funcion anonima
+        const funcionExpresada = function(){
+            console.log("Esto es una funcion expresada, es decir, una funcion que se le ha "+
+            +"asignado como valor a una variable, si invocamos esta funcion ante de su definicion JS nos dira...");
+        }
+        //Estas funciones no se pueden colocar antes de la declaracion de la misma, causan error
+
+        funcionExpresada();
+
+       //############################################################################
+       //----Arrays----
+
+       const arrayA = [];
+       const arrayB = [1,true,"Hola", ['A', "B", "C",[1,2,3]]];
+       console.log(arrayB[3][2]);
+       console.log(arrayB[3][3][1]);
+
+       const ArrayC = Array.of("X","Y","Z",9,8,7);
+       const ArrayD = Array(100).fill(false);
+       console.log(ArrayD);
+
+       const colores = ["Rojo", "Amarillo", "Azul"];
+       colores.push("Negro");
+       console.log(colores);
+
+       colores.pop("Azul");
+       console.log(colores);
+
+       colores.forEach(function (el, index){
+        console.log(`<li id="${index}">${el}</li>`);
+       })
+
+       //################################################################3
+       //Un objeto es declarado a traves de dos corchetes
+       //Una funcion puede contener variables llamadas atributos
+       //Asi tambien funciones que se llaman metodos
+       const obj = {};
+       console.log(obj);
+
+       const objA = new Object();
+
+       const Jon = {
+        nombre: "Jon",
+        apellido: "Doe",
+        edad:35,
+        pasatiempos: ['Correr', 'Fuchibol'],
+        soltero: true,
+        contacto:{
+            email:"jon.doe@gmail.com",
+            twitter:"@jonDoe",
+            movil:"25267182"
+        },
+        saludar:function(){
+            console.log('Hola :)')
+        },
+        decirMiNombre:function(){
+            console.log(`Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.edad}`)
+        }
+       }
+
+       console.log(Jon.apellido);
+       console.log(Jon.pasatiempos[1]);
+       console.log(Jon.contacto.twitter);
+       Jon.saludar();
+       Jon.decirMiNombre();
+
+       console.log(Object.keys(Jon));//Retorna las llaves del objeto Jon
+       console.log(Object.values(Jon)); //Retorna los valores del objeto de Jon
+       console.log(Jon.hasOwnProperty("nombre")); //Verifica que exista la propiedad de ese objeto. En este caso, si exite nombre, entonces retorna true
+
+       */
+
+       /*
+        = 1 igual es asignacion de variable
+        == 2 igual es comparacion de valores
+        === 3 iguales es comparacion de tipo de dato y de valor - Lo ideal es usar este
+       
+
+       try {
+            console.log('En el Try se pone el codigo que se evalua')
+       }catch(error){
+            console.log('Catch, captura cualquier error surgido o lanzando el try')
+            console.log(error);
+        }finally{
+            console.log('El bloque finally se ehercutara siempre al final de un bloque try-catch')
+       }
+
+    
+        
+       
+       //Parametros REST
+
+       function sumar(a, b, ...c){
+        let resultado = a + b;
+        c.forEach(function (n){
+            resultado += n 
+        });
+
+        return resultado;
+       }
+       console.log(sumar(1,2)); //3
+       console.log(sumar(1,2,3,4)); //10
+       console.log(sumar(1,2,3,4,5)); //15
+       console.log(sumar(1,2,3,4,5,6)); //21
+
+       //Operador Spread
+       const arr1 = [1,2,3,4,5], arr2=[6,7,8,9,0];
+       console.log(arr1,arr2);
+
+       const arr3 = [...arr1, ...arr2];
+       console.log(arr3); //(10)[1,2,3,4,5,6,7,8,9,0] - Se expandio el array, y la cantidad de espacios 
+       */
+
+
+
+       //Arrow functions
+       /*const saludar = nombre =>console.log(`Hola ${nombre}`);
+       saludar('Irma');
+
+       const sumar = function(a,b){
+        return a + b;
+       }
+
+       console.log(sumar(8,9));
+
+       //----Entonces con Arrow Functions queda asi:
+       const sumar = (a,b) => a=b;
+       console.log(sumar(8,9));
+
+       //Una funcion con varias lineas
+       const funcionDeVariasLineas = () =>{
+        console.log('Uno');
+        console.log('Dos');
+        console.log('Tres');
+       }
+       
+       funcionDeVariasLineas();
+
+       //Si hacemos un iterador con una arrow function
+
+       const numeros = [1,2,3,4,5];
+       numeros.forEach((elemento, index) => console.log(`${elemento} esta en la posicion ${index}`));
+  
+
+       //#############################################################################################
+
+       //POO
+       const animal = {
+        nombre: 'Snoopy',
+        sonar(){
+            console.log("Hago sonidos porque estoy vivo");
+        }
+       }
+
+       console.log(animal);
+*/
+
+
+       //Constructor de JS
+       //##############################################################################################
+       function Animal(nombre, genero){
+        this.nombre = nombre;
+        this.genero = genero;
+
+        this.sonar = function(){
+            console.log("Hago sonidos porque estoy vivo");
+        }
+
+        this.saludar = function(){
+            console.log(`Hola me llamo ${this.nombre}`)
+        }
+       }
+
+       const snoopy = new Animal("Snoopy", "Macho"),lolaBunny = new Animal("Lola Bunny", "Hembra");
+       console.log(snoopy, lolaBunny);
+
+       snoopy.saludar();
+
+       
+
+    </script>
+</body>
+</html>
