@@ -169,9 +169,6 @@
         }finally{
             console.log('El bloque finally se ehercutara siempre al final de un bloque try-catch')
        }
-
-    
-        
        
        //Parametros REST
 
@@ -238,15 +235,17 @@
        }
 
        console.log(animal);
-*/
+
+       //###############################################################
 
 
        //Constructor de JS
-       //##############################################################################################
+       //###############################################################
        function Animal(nombre, genero){
         this.nombre = nombre;
         this.genero = genero;
 
+        //Atributos y metodos tienen que ir posterior al objeto this
         this.sonar = function(){
             console.log("Hago sonidos porque estoy vivo");
         }
@@ -256,13 +255,89 @@
         }
        }
 
-       const snoopy = new Animal("Snoopy", "Macho"),lolaBunny = new Animal("Lola Bunny", "Hembra");
-       console.log(snoopy, lolaBunny);
+       const snoopy = new Animal("Snoopy", "Macho"), gato = new Animal("Lola Bunny", "Hembra");
+       console.log(snoopy, gato);
+       const greco = new Animal("Greco", "Macho");
+       console.log(greco);
 
-       snoopy.saludar();
-
+       //Toda instancia del objeto Animal tienen los atributos y metodos del objeto Animal
        
+       //################################################################
+       //Herencia Prototipica
+       function Perro(nombre, genero, tamanio){
+           this.super = Animal;
+           this.super(nombre, genero);
+           this.tamanio = tamanio;
+        }
+        
+        //Para asignar una nueva instancia de Animal
+        //Aqui Perro esta heredando de Animal
+        Perro.prototype = new Animal();
+        //Aqui jalo las caracteristicas de la clase Animal
+        Perro.prototype.constructor = Perro;
+        
+        //Sobreescritura de metodos del Prototipo Padre en el hijo
+        Perro.prototype.sonar = function (){
+            console.log("Soy un perro y mi sonido es un ladrido");
+        }
+        
+        Perro.prototype.ladrar = function(){
+            console.log("Guau guau!!");
+        }
 
-    </script>
+        const firulais = new Perro("Firulais", "Macho", "Mediano");
+        console.log(firulais);
+
+        snoopy.saludar();
+        greco.saludar();
+        firulais.saludar();
+        firulais.ladrar();
+        
+
+        class Animal{
+
+            constructor(nombre, genero){
+                this.nombre = nombre;
+                this.genero = genero;
+            }
+
+            sonar(){
+                console.log("Hago sonidos porque estoy vivo");
+            }
+
+            saludar(){
+                console.log(`Hola me llamo ${this.nombre}`);
+            }    
+        };
+        
+        class Perro extends Animal{
+
+            constructor(nombre, genero, tamanio){
+                //Se hace el llamado al constructor Padre 
+                //con super()
+                super(nombre, genero);
+                this.tamanio = tamanio;
+            }
+            //Sobreescribimos el metodo sonar y el metodo ladrar
+            sonar(){
+                console.log("Soy un perro y mi sonido es un ladrido");
+            }
+            ladrar(){
+                console.log("Guauuuu Guauuu!!");
+            }
+        }
+
+        const mimi = new Animal("Mimi", "Hembra"), scooby = new Perro("Scooby","Macho","Gigante");
+        console.log(mimi);
+        mimi.saludar();
+        mimi.sonar();
+        console.log(scooby);
+        scooby.saludar();
+        scooby.sonar();
+        scooby.ladrar();
+        */
+        
+
+        </script>
 </body>
 </html>
