@@ -293,7 +293,7 @@
         firulais.saludar();
         firulais.ladrar();
         
-
+*/
         class Animal{
 
             constructor(nombre, genero){
@@ -317,6 +317,7 @@
                 //con super()
                 super(nombre, genero);
                 this.tamanio = tamanio;
+                this.raza = null;
             }
             //Sobreescribimos el metodo sonar y el metodo ladrar
             sonar(){
@@ -325,8 +326,20 @@
             ladrar(){
                 console.log("Guauuuu Guauuu!!");
             }
+            static queEres(){
+                console.log("Los perros somos animales mamiferos que pertenecemos a la familia de los caninos.");
+            }
+
+            get getRaza(){
+                return this.raza;
+            }
+            set setRaza(raza){
+                this.raza = raza;
+            }
         }
 
+
+        Perro.queEres();
         const mimi = new Animal("Mimi", "Hembra"), scooby = new Perro("Scooby","Macho","Gigante");
         console.log(mimi);
         mimi.saludar();
@@ -335,7 +348,13 @@
         scooby.saludar();
         scooby.sonar();
         scooby.ladrar();
-        */
+        //Los metodos getters y setters se trabajan como si fueran atributos y no metodos
+        scooby.getRaza;
+        scooby.setRaza = "Gran Danes";
+        console.log(scooby.getRaza);
+        
+
+
         
 
         </script>
